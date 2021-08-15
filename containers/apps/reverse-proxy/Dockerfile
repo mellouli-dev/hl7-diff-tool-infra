@@ -14,13 +14,13 @@ WORKDIR /usr/src/app
 
 # Copy dependency definitions
 
-COPY ./hl7-diff-tool-frontend/package.json /usr/src/app
+COPY ../../../../hl7-diff-tool-frontend/package.json /usr/src/app
 # Install dependecies
 
 RUN npm install
 # Get all the code needed to run the app
 
-COPY ./hl7-diff-tool-frontend/ /usr/src/app
+COPY ../../../../hl7-diff-tool-frontend/ /usr/src/app
 
 # Run the angular in product
 RUN npm run build:$env
