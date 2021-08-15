@@ -1,9 +1,9 @@
 version: "3.3"
 services:
 
-  pact:
-    build: ./pact
-    image: pact
+  pact-backend:
+    build: ../../../hl7-diff-tool-backend
+    image: pact-backend
     networks:
       - pact
     expose:

@@ -1,3 +1,32 @@
+### STAGE 1: Build ###
+# We label our stage as ‘builder’
+FROM node:12 as node
+
+# build-time variables
+# prod|sandbox its value will be come from outside
+ARG env=prod
+
+# Create a directory where our app will be placed
+RUN mkdir -p /usr/src/app
+# Change directory so that our commands run inside this new directory
+
+WORKDIR /usr/src/app
+
+# Copy dependency definitions
+
+COPY ./hl7-diff-tool-frontend/package.json /usr/src/app
+# Install dependecies
+
+RUN npm install
+# Get all the code needed to run the app
+
+COPY ./hl7-diff-tool-frontend/ /usr/src/app
+
+# Run the angular in product
+RUN npm run build:$env
+
+
+
 # Pull base image.
 FROM ubuntu-base
 
@@ -19,6 +48,9 @@ RUN \
 COPY config/nginx.conf /etc/nginx/nginx.conf
 # The child image will copy over the default.conf
 
+## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
+RUN mkdir -p /etc/app
+COPY --from=node /usr/src/app/dist /etc/app
 
 # Define mountable directories.
 VOLUME ["/etc/nginx/certs", "/var/log/nginx", "/var/www/html"]
