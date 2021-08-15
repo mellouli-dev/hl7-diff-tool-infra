@@ -15,8 +15,9 @@ services:
       - ../../data/pact/logs/:/var/log/pact/
 
   pact-reverse-proxy:
-      build: ./reverse-proxy
-      context: ../../../
+      build:
+        context: ../../../
+        dockerfile: ./hl7-diff-tool-infra/containers/apps/reverse-proxy/Dockerfile
       networks:
         - pact
       image: pact-reverse-proxy
