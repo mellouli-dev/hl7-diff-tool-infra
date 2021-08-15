@@ -10,7 +10,7 @@ services:
       - "8106"
     ports:
       - "8106:8106"
-    container_name: pact
+    container_name: pact-backend
     volumes:
       - ../../data/pact/logs/:/var/log/pact/
 
@@ -26,9 +26,9 @@ services:
       ports:
           - "8085:8085"
       depends_on:
-          - pact
+          - pact-backend
       links:
-          - pact:pact
+          - pact-backend:pact-backend
 
 networks:
   pact:
