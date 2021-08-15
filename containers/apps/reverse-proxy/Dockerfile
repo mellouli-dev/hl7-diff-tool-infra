@@ -105,13 +105,13 @@ RUN npm run build:$env
 ### STAGE 2: Setup ###
 FROM nginx:1.14.1-alpine
 ## Copy our default nginx config
-COPY ./hl7-diff-tool-infra/containers/apps/reverse-proxy-prod/config/nginx-default.conf /etc/nginx/conf.d/default.conf
+COPY ./hl7-diff-tool-infra/containers/apps/reverse-proxy/config/nginx-default.conf /etc/nginx/conf.d/default.conf
 
 ## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
 RUN mkdir -p /etc/app
 COPY --from=node /usr/src/app/dist /etc/app
-ARG servercer=./hl7-diff-tool-infra/containers/apps/reverse-proxy-prod/certs/recorder.crt
-ARG serverkey=./hl7-diff-tool-infra/containers/apps/reverse-proxy-prod/certs/recorder.key
+ARG servercer=./hl7-diff-tool-infra/containers/apps/reverse-proxy/certs/recorder.crt
+ARG serverkey=./hl7-diff-tool-infra/containers/apps/reverse-proxy/certs/recorder.key
 COPY $servercer /etc/ssl/certs/localhost.crt
 COPY $serverkey /etc/ssl/private/localhost.key
 
