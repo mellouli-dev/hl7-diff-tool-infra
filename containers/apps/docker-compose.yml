@@ -16,6 +16,7 @@ services:
 
   pact-reverse-proxy:
       build: ./reverse-proxy
+      context: ../../../
       networks:
         - pact
       image: pact-reverse-proxy

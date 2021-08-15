@@ -89,7 +89,6 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Copy dependency definitions
-RUN ls
 
 COPY ./hl7-diff-tool-frontend/package.json /usr/src/app
 # Install dependecies
