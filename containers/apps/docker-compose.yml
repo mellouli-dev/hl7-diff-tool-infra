@@ -7,9 +7,9 @@ services:
     networks:
       - pact
     expose:
-      - "8106"
+      - "8107"
     ports:
-      - "8106:8106"
+      - "8107:8107"
     container_name: pact-backend
     volumes:
       - ../../data/pact/logs/:/var/log/pact/
