@@ -26,7 +26,7 @@ services:
           - ../../data/pact-reverse-proxy/logs/:/var/log/nginx/
           - ../../data/pact-reverse-proxy/html:/usr/share/nginx/html:ro
       ports:
-          - "9008:9008"
+          - "8085:8085"
       depends_on:
           - pact-backend
       links:
