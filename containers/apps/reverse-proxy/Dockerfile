@@ -103,7 +103,7 @@ RUN npm run build:$env
 
 
 ### STAGE 2: Setup ###
-FROM nginx:1.14.1-alpine
+FROM nginx:1.21.5
 ## Copy our default nginx config
 COPY ./hl7-diff-tool-infra/containers/apps/reverse-proxy/config/nginx-default.conf /etc/nginx/conf.d/default.conf
 
