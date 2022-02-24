@@ -110,9 +110,6 @@ COPY ./hl7-diff-tool-infra/containers/apps/reverse-proxy/config/nginx-default.co
 ## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
 RUN mkdir -p /etc/app
 COPY --from=node /usr/src/app/dist /etc/app
-ARG servercer=./hl7-diff-tool-infra/containers/apps/reverse-proxy/certs/hit-dev.crt
-ARG serverkey=./hl7-diff-tool-infra/containers/apps/reverse-proxy/certs/hit-dev.key
-COPY $servercer /etc/ssl/certs/localhost.crt
-COPY $serverkey /etc/ssl/private/localhost.key
+
 
 CMD ["nginx", "-g", "daemon off;"]
