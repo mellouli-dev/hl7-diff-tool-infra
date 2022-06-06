@@ -11,6 +11,7 @@ services:
     ports:
       - "8107:8107"
     container_name: pact-backend
+    restart: unless-stopped
     volumes:
       - ../../data/pact/logs/:/var/log/pact/
 
@@ -22,6 +23,7 @@ services:
         - pact
       image: pact-reverse-proxy
       container_name: pact-reverse-proxy
+      restart: unless-stopped
       volumes:
           - ../../data/pact-reverse-proxy/logs/:/var/log/nginx/
           - ../../data/pact-reverse-proxy/html:/usr/share/nginx/html:ro
