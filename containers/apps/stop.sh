@@ -1,1 +1,1 @@
-docker-compose --verbose down
+docker compose --verbose down
